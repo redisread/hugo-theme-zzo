@@ -25,7 +25,12 @@ $grid_max: $grid_max_width + $grid_max_unit;
       background-color: themed('body-background-color');
   }
   @media only screen and (max-width: 769px) {
-      grid-template-columns: minmax(0, $grid_main_main) minmax(0, $grid_main_side);
+      grid-template-columns: 1fr;
+
+      .main-side,
+      .single__side {
+        display: none;
+      }
   }
   
   &__left {
