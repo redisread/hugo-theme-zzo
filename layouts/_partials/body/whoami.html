@@ -33,16 +33,16 @@
       {{ end }}
     </div>
     <div class="whoami__desc">
-      {{ if $.Param "authorDesc" }}
-        {{ $.Param "AuthorDesc" }}
-      {{ else }}
-        {{ $.Param "whoami" }}
-      {{ end }}
+      {{- if $.Param "authorDesc" -}}
+        {{- $.Param "authorDesc" -}}
+      {{- else -}}
+        {{- $.Param "whoami" -}}
+      {{- end -}}
     </div>
     <div class="whoami__social">
       {{ range $name, $path := $.Param "socialOptions" }}
       {{ if $path }}
-      <a href="{{ $path | safeURL }}" title="{{ $name }}" aria-label="{{ $name }}">
+      <a href="{{ $path | safeURL }}" title="{{ if eq $name "twitter" }}X{{ else }}{{ $name }}{{ end }}" aria-label="{{ if eq $name "twitter" }}X{{ else }}{{ $name }}{{ end }}">
         {{ partial (print "svgs/social/" $name ".svg") (dict "width" 25 "height" 25) }}
       </a>
       {{ end }}

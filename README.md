@@ -1,7 +1,6 @@
 > **This fork requires Hugo 0.168.0 and Dart Sass 1.105.2.** See [build instructions and migration guide](docs/hugo-upgrade.md). The migration guide takes precedence over upstream documentation.
 
-English | 
-[한국어](README.ko.md)
+English | [简体中文](README.zh-CN.md)
 
 ## Hugo Theme Zzo
 
