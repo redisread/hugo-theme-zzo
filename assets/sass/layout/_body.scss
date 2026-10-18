@@ -1,13 +1,18 @@
+@use "sass:map";
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../themes/theme";
+
 #container {
   position: relative;
-  
-  @include flexbox();
-  
-  @include themify($themes) {
-      color: themed('body-color');
-      background-color: themed('backdrop-background-color');
+
+  @include flexbox.flexbox();
+
+  @include mixins.themify(theme.$themes) {
+      color: mixins.themed('body-color');
+      background-color: mixins.themed('backdrop-background-color');
       hr {
-        border-color: themed('hr-color');
+        border-color: mixins.themed('hr-color');
       }
   }
 }
@@ -16,8 +21,8 @@ html {
   overflow-x: hidden;
 }
 
-@each $theme, $map in $themes {
+@each $theme, $map in theme.$themes {
   body.theme__#{$theme} {
-    background-color: map-get($map, 'backdrop-background-color');
+    background-color: map.get($map, 'backdrop-background-color');
   }
 }

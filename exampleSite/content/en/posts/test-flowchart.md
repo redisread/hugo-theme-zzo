@@ -6,10 +6,8 @@ Nodes and connections are defined in separately so that nodes can be reused and 
 draft: false
 enableToc: false
 enableTocContent: false
-tags:
--
-series:
--
+tags: []
+series: []
 categories:
 - diagram
 libraries:

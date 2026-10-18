@@ -1,11 +1,14 @@
+@use "sass:map";
+@use "sass:math";
+@use "sass:string";
 $theme-map: null;
 @mixin themify($themes) {
   @each $theme, $map in $themes {
     .theme__#{$theme} & {
       $theme-map: () !global;
       @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), "#{$key}");
-        $theme-map: map-merge(
+        $value: map.get(map.get($themes, $theme), "#{$key}");
+        $theme-map: map.merge(
           $theme-map,
           (
             $key: $value
@@ -25,7 +28,7 @@ $theme-map: null;
 }
 
 @mixin responsive-ratio($x, $y, $pseudo: false) {
-  $padding: unquote(($y / $x) * 100 + "%");
+  $padding: string.unquote(math.div($y, $x) * 100 + "%");
   @if $pseudo {
     &:before {
       @include pseudo($pos: relative);
@@ -48,12 +51,12 @@ $theme-map: null;
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-top: $size solid $color;
-    margin-top: 0 - round($size / 2.5);
+    margin-top: 0 - math.round(math.div($size, 2.5));
   } @else if $direction == up {
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-bottom: $size solid $color;
-    margin-bottom: 0 - round($size / 2.5);
+    margin-bottom: 0 - math.round(math.div($size, 2.5));
   } @else if $direction == right {
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
@@ -210,13 +213,13 @@ $theme-map: null;
   }
   @-moz-keyframes #{$animation-name} {
     @content;
-  }  
+  }
   @-ms-keyframes #{$animation-name} {
     @content;
   }
   @-o-keyframes #{$animation-name} {
     @content;
-  }  
+  }
   @keyframes #{$animation-name} {
     @content;
   }
@@ -227,7 +230,7 @@ $theme-map: null;
   -moz-animation: #{$str};
   -ms-animation: #{$str};
   -o-animation: #{$str};
-  animation: #{$str};      
+  animation: #{$str};
 }
 
 @mixin no-select {
@@ -276,4 +279,7 @@ $theme-map: null;
 @mixin moz-scrollbars($foreground-color, $background-color) {
   scrollbar-width: thin;
   scrollbar-color: $foreground-color $background-color;
+}
+@function themed($key) {
+  @return map.get($theme-map, $key);
 }

@@ -1,11 +1,16 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .archive {
   position: relative;
   width: 100%;
   padding: 2rem 2rem 0;
 
-  @include flexbox();
-  @include flex-direction(column);
-  @include justify-content(flex-start);
+  @include flexbox.flexbox();
+  @include flexbox.flex-direction(column);
+  @include flexbox.justify-content(flex-start);
 
   @media only screen and (max-width:768px) {
     padding: 2rem 1rem 0;
@@ -26,8 +31,8 @@
         top: 0;
         width: 0.25rem;
         height: 100%;
-        @include themify($themes) {
-          background-color: themed('toc-vertical-line');
+        @include mixins.themify(theme.$themes) {
+          background-color: mixins.themed('toc-vertical-line');
         }
       }
 
@@ -46,8 +51,8 @@
         top: 0;
         width: 0.25rem;
         height: 100%;
-        @include themify($themes) {
-          background-color: themed('toc-vertical-line');
+        @include mixins.themify(theme.$themes) {
+          background-color: mixins.themed('toc-vertical-line');
         }
       }
       @media only screen and (max-width: 769px) {
@@ -79,12 +84,12 @@
       }
     }
 
-    @include transition(margin-left, 0.1s, ease);
-    @include flexbox();
-    @include align-items(flex-start);
+    @include mixins.transition(margin-left, 0.1s, ease);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(flex-start);
 
     @media only screen and (max-width: 600px) {
-      @include flex-direction(column);
+      @include flexbox.flex-direction(column);
     }
   }
 
@@ -96,18 +101,18 @@
     padding: 0.125rem;
     font-size: 0.95rem;
     font-weight: 700;
-    font-family: $title-font;
+    font-family: settings.$title-font;
 
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(center);
-    @include themify($themes) {
-      color: themed('archive-key-color');
-      background-color: themed('archive-key-background-color');
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.justify-content(center);
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('archive-key-color');
+      background-color: mixins.themed('archive-key-background-color');
     }
 
     &[data-ani="true"] {
-      @include animation('slide-in-down .4s .2s 1 ease both');
+      @include mixins.animation('slide-in-down .4s .2s 1 ease both');
     }
 
     &:not(:first-child) {
@@ -121,13 +126,13 @@
   &__meta {
     border-radius: 0.25rem;
     min-width: 100px;
-    max-width: 100px;    
+    max-width: 100px;
 
-    @include flexbox();
-    @include align-items(center);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
 
     &[data-ani="true"] {
-      @include animation('slide-in-left .2s .5s 1 ease both');
+      @include mixins.animation('slide-in-left .2s .5s 1 ease both');
     }
   }
 
@@ -135,19 +140,19 @@
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
     font-size: 0.8rem;
-    font-family: $title-font;
+    font-family: settings.$title-font;
     width: 50%;
     height: 24px;
     line-height: 24px;
     text-align: center;
 
-    @include truncate(50px);
-    @include themify($themes) {
-      color: themed('archive-type-color');
-      background-color: themed('archive-type-background-color');
+    @include mixins.truncate(50px);
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('archive-type-color');
+      background-color: mixins.themed('archive-type-background-color');
 
       @media only screen and (max-width: 769px) {
-        border-right: 2px solid themed('toc-vertical-line');
+        border-right: 2px solid mixins.themed('toc-vertical-line');
       }
     }
   }
@@ -156,49 +161,49 @@
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     font-size: 0.8rem;
-    font-family: $title-font;
+    font-family: settings.$title-font;
     width: 50%;
     height: 24px;
     line-height: 24px;
-    text-align: center;        
+    text-align: center;
 
-    @include truncate(50px);
-    @include themify($themes) {
-      color: themed('archive-meta-color');
-      background-color: themed('archive-type-background-color');
+    @include mixins.truncate(50px);
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('archive-meta-color');
+      background-color: mixins.themed('archive-type-background-color');
 
       @media only screen and (max-width: 769px) {
-        border-left: 2px solid themed('toc-vertical-line');
+        border-left: 2px solid mixins.themed('toc-vertical-line');
       }
     }
   }
 
   &__title {
-    margin-right: 0.5rem;    
+    margin-right: 0.5rem;
     margin-left: 1rem;
-    font-family: $title-font;
+    font-family: settings.$title-font;
 
     &[data-title-wrap^="no"] {
-      @include truncate($grid-max-width);
+      @include mixins.truncate(settings.$grid-max-width);
     }
 
     @media only screen and (max-width: 600px) {
       margin-top: 1rem;
       margin-bottom: 0.5rem;
     }
-    
-    @include on-event {
+
+    @include mixins.on-event {
       &[data-dir="ltr"] {
         &::before {
           content: '';
           position: absolute;
-          left: 3rem;                
+          left: 3rem;
           width: 0.25rem;
           height: 30px;
-          
-          @include themify($themes) {
-            background-color: themed('archive-hover-line-color');
-            
+
+          @include mixins.themify(theme.$themes) {
+            background-color: mixins.themed('archive-hover-line-color');
+
             @media only screen and (max-width:768px) {
               top: 13px;
               height: 24px;
@@ -208,7 +213,7 @@
           @media only screen and (max-width: 769px) {
             height: 24px;
             top: 50%;
-            @include translateY(-50%);
+            @include mixins.translateY(-50%);
           }
         }
       }
@@ -217,13 +222,13 @@
         &::before {
           content: '';
           position: absolute;
-          right: 3rem;                
+          right: 3rem;
           width: 0.25rem;
           height: 30px;
-          
-          @include themify($themes) {
-            background-color: themed('archive-hover-line-color');
-            
+
+          @include mixins.themify(theme.$themes) {
+            background-color: mixins.themed('archive-hover-line-color');
+
             @media only screen and (max-width:768px) {
               top: 13px;
               height: 24px;
@@ -233,7 +238,7 @@
           @media only screen and (max-width: 769px) {
             height: 24px;
             top: 50%;
-            @include translateY(-50%);
+            @include mixins.translateY(-50%);
           }
         }
       }
@@ -243,10 +248,10 @@
   &__subtitle {
     text-align: center;
     font-weight: bold;
-    font-family: $title-font;
+    font-family: settings.$title-font;
 
-    @include themify($themes) {
-      color: themed('terms-title-color');
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('terms-title-color');
     }
     @media only screen and (max-width:600px) {
       margin-bottom: 1rem;

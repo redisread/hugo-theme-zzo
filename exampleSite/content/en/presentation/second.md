@@ -2,12 +2,9 @@
 title: "Second"
 date: 2019-10-30T20:45:24+09:00
 description: "My second presentation"
-tags:
--
-series:
--
-categories:
--
+tags: []
+series: []
+categories: []
 image: images/feature1/number-two.png
 revealBackgroundColor: "" # #fff or rgba() or hsl()
 revealBackgroundImage: "" # /images/myImage.png   <= static folder path

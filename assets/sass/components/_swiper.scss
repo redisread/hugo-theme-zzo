@@ -1,3 +1,5 @@
+@use "../abstracts/flexbox";
+
 .swipe {
   overflow: hidden;
   visibility: hidden;
@@ -15,9 +17,9 @@
   overflow: hidden;
   object-fit: contain;
 
-  @include flexbox();
-  @include justify-content(center);
-  @include align-items(center);
+  @include flexbox.flexbox();
+  @include flexbox.justify-content(center);
+  @include flexbox.align-items(center);
 }
 
 .swipe-home > div {
@@ -26,24 +28,24 @@
   position: relative;
   overflow: hidden;
 
-  @include flexbox();
-  @include justify-content(center);
-  @include flex-direction(column);
+  @include flexbox.flexbox();
+  @include flexbox.justify-content(center);
+  @include flexbox.flex-direction(column);
 }
 
 .swiper-slide {
-  @include flexbox();
-  @include flex-direction(column);
+  @include flexbox.flexbox();
+  @include flexbox.flex-direction(column);
 
   &[data-align='center'] {
-    @include align-items(center);
+    @include flexbox.align-items(center);
   }
-  
+
   &[data-align='left'] {
-    @include align-items(flex-start);
+    @include flexbox.align-items(flex-start);
   }
-  
+
   &[data-align='right'] {
-    @include align-items(flex-end);
+    @include flexbox.align-items(flex-end);
   }
 }

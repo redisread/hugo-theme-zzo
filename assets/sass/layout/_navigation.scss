@@ -1,9 +1,15 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/functions";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .navbar {
   margin: auto;
   width: inherit;
   max-width: inherit;
-  height: $grid_navbar_height;
-  z-index: z('navbar');
+  height: settings.$grid_navbar_height;
+  z-index: functions.z('navbar');
   position: fixed;
   left: 0;
   right: 0;
@@ -12,27 +18,27 @@
   &[data-dir="rtl"] {
     direction: rtl;
   }
-  
+
   &[data-dir="ltr"] {
     direction: ltr;
   }
 
   @media only screen and (max-width: 769px) {
     &[data-dir="rtl"] {
-      direction: ltr;  
+      direction: ltr;
     }
   }
 
-  @include transition(all, 0.2s, ease);  
-  @include flexbox();
-  @include justify-content(space-between);
-  @include themify($themes) {
-    border-bottom: 1px solid themed('navbar-border-bottom-color');
-    background-color: themed('navbar-background-color');
+  @include mixins.transition(all, 0.2s, ease);
+  @include flexbox.flexbox();
+  @include flexbox.justify-content(space-between);
+  @include mixins.themify(theme.$themes) {
+    border-bottom: 1px solid mixins.themed('navbar-border-bottom-color');
+    background-color: mixins.themed('navbar-background-color');
   }
 
   &--hide {
-    top: -$grid_navbar_height;
+    top: -(settings.$grid_navbar_height);
   }
 
   &--show {
@@ -45,11 +51,11 @@
       display: block;
     }
 
-    @include themify($themes) {
-      background-color: themed('navbar-background-color') !important;
+    @include mixins.themify(theme.$themes) {
+      background-color: mixins.themed('navbar-background-color') !important;
 
-      @include on-event {
-        color: themed('navbar-title-hover-color');
+      @include mixins.on-event {
+        color: mixins.themed('navbar-title-hover-color');
       }
     }
 
@@ -57,49 +63,49 @@
       @media only screen and (min-width: 769px) {
         @for $i from 1 through 10 {
           &:nth-child(#{$i}) {
-            @include animation('slide-in-down .25s #{$i * .1}s 1 ease both');
+            @include mixins.animation('slide-in-down .25s #{$i * .1}s 1 ease both');
           }
         }
       }
     }
   }
-  
-  &__brand {
-    height: $grid_navbar_height;
 
-    @include flexbox();
-    @include align-items(center);
-    @include flex-shrink(0);  
+  &__brand {
+    height: settings.$grid_navbar_height;
+
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.flex-shrink(0);
   }
 
   &__burger {
     display: none;
 
     &[data-ani="true"] {
-      @include animation('slide-in-down .5s .0s 1 ease both');
+      @include mixins.animation('slide-in-down .5s .0s 1 ease both');
     }
-    
+
     @media only screen and (max-width: 769px) {
       cursor: pointer;
       margin-left: auto;
-      height: $grid_navbar_height;    
+      height: settings.$grid_navbar_height;
       width: 35px;
       position: absolute;
       right: 0;
 
-      @include flexbox();
-      @include align-items(center);
-      @include justify-content(flex-end);
-      @include themify($themes) {
-        background: themed('navbar-background-color');
-        border-bottom: 1px solid themed('navbar-border-bottom-color');
+      @include flexbox.flexbox();
+      @include flexbox.align-items(center);
+      @include flexbox.justify-content(flex-end);
+      @include mixins.themify(theme.$themes) {
+        background: mixins.themed('navbar-background-color');
+        border-bottom: 1px solid mixins.themed('navbar-border-bottom-color');
       }
 
       span {
-        @include themify($themes) {
-          background-color: themed('burger-menu-color');
+        @include mixins.themify(theme.$themes) {
+          background-color: mixins.themed('burger-menu-color');
         }
-        
+
         border-radius: 1rem;
         display: block;
         height: 2px;
@@ -109,25 +115,25 @@
         transition-duration: 86ms;
         transition-property: background-color, opacity, transform;
         transition-timing-function: ease-out;
-        z-index: z('navbar');
+        z-index: functions.z('navbar');
         width: 16px;
         &:nth-child(1) {
           top: calc(50% - 6px);
-        }      
+        }
         &:nth-child(2) {
           top: calc(50% - 1px);
-        } 
+        }
         &:nth-child(3) {
           top: calc(50% + 4px);
-        }      
-      }      
-          
-      @include on-event {
+        }
+      }
+
+      @include mixins.on-event {
         span {
-          @include themify($themes) {
-            background-color: themed('navbar-title-hover-color');
+          @include mixins.themify(theme.$themes) {
+            background-color: mixins.themed('navbar-title-hover-color');
           }
-        }        
+        }
       }
 
       &.is-active {
@@ -135,14 +141,14 @@
         span {
           &:nth-child(1) {
             transform: translateY(5px) rotate(45deg);
-          }        
+          }
           &:nth-child(2) {
             opacity: 0;
-          }        
+          }
           &:nth-child(3) {
             transform: translateY(-5px) rotate(-45deg);
-          }        
-        }      
+          }
+        }
       }
     }
   }
@@ -156,7 +162,7 @@
       height: 40px;
       padding: 0.1rem;
       margin: auto 0.25rem;
-      @include flex-shrink(0);
+      @include flexbox.flex-shrink(0);
       flex-shrink: 0;
     }
   }
@@ -167,74 +173,74 @@
       height: 100%;
       padding: 0.6rem 0.2rem;
       margin: auto 0.25rem;
-      @include flex-shrink(0);
+      @include flexbox.flex-shrink(0);
       flex-shrink: 0;
     }
   }
 
   &__title {
-    height: $grid_navbar_height;
+    height: settings.$grid_navbar_height;
     font-size: 1.5rem;
-    font-family: $title-font;
+    font-family: settings.$title-font;
 
-    @include flexbox();
-    @include align-items(center);        
-    
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+
     &-link {
-      @include themify($themes) {
-        color: themed("navbar-title-color");
-        @include on-event {
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed("navbar-title-color");
+        @include mixins.on-event {
             text-decoration: none;
-            color: themed("navbar-title-color");
+            color: mixins.themed("navbar-title-color");
         }
       }
     }
   }
 
   &__menu {
-    @include flex-grow(1);
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(flex-end);
+    @include flexbox.flex-grow(1);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.justify-content(flex-end);
 
-    height: $grid_navbar_height;
+    height: settings.$grid_navbar_height;
 
     @media only screen and (max-width: 769px) {
       display: none;
-    }    
+    }
 
     &-item {
-      height: $grid_navbar_height;
+      height: settings.$grid_navbar_height;
       padding: 0.5rem;
       font-size: 1rem;
-      font-family: $title-font;
+      font-family: settings.$title-font;
       font-weight: 700;
-      
-      @include flexbox();
-      @include align-items(center);
-      @include justify-content(center);
-      @include no-select;
-      @include themify($themes) {
-        color: themed('navbar-title-color');
+
+      @include flexbox.flexbox();
+      @include flexbox.align-items(center);
+      @include flexbox.justify-content(center);
+      @include mixins.no-select;
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('navbar-title-color');
         border-top: 1px solid transparent;
-        border-bottom: 1px solid themed('navbar-border-bottom-color');
-        background-color: themed('navbar-background-color');
-        @include on-event {
-          color: themed('navbar-title-hover-color');
+        border-bottom: 1px solid mixins.themed('navbar-border-bottom-color');
+        background-color: mixins.themed('navbar-background-color');
+        @include mixins.on-event {
+          color: mixins.themed('navbar-title-hover-color');
           // background-color: themed('navbar-menu-hover-background-color');
           text-decoration: none;
-          border-bottom: 1px solid themed('navbar-border-bottom-color');
+          border-bottom: 1px solid mixins.themed('navbar-border-bottom-color');
         }
         @media only screen and (max-width: 769px) {
           border-bottom: none;
         }
         &.active {
-          color: themed('navbar-title-active-color') !important;
+          color: mixins.themed('navbar-title-active-color') !important;
         }
       }
 
       @media only screen and (max-width: 769px) {
-        @include justify-content(flex-start);
+        @include flexbox.justify-content(flex-start);
         width: 100%;
         padding: 0 0.75rem;
       }
@@ -251,7 +257,7 @@
     //   @include flexbox();
     //   @include flex-direction(column);
     //   @include align-items(flex-start);
-    //   @include themify($themes) {        
+    //   @include themify($themes) {
     //     border-top: 1px solid themed('navbar-border-bottom-color');
     //     background-color: themed('navbar-mobile-background-color');
     //     border-bottom: 1px solid themed('navbar-border-bottom-color');
@@ -261,7 +267,7 @@
 
   &__dropdown {
     display: inline-block;
-    height: $grid_navbar_height;
+    height: settings.$grid_navbar_height;
     @media only screen and (max-width: 769px) {
       width: 100%;
       height: auto;
@@ -270,24 +276,24 @@
     &--content {
       position: absolute;
       display: none;
-      width: inherit;      
-      z-index: z("dropdown");
+      width: inherit;
+      z-index: functions.z("dropdown");
       border-bottom-left-radius: 0.15rem;
       border-bottom-right-radius: 0.15rem;
 
-      @include box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
-      @include themify($themes) {
-        border-top: 4px solid themed("dropdown-border-top-color");
-        background-color: themed("dropdown-content-background-color");
+      @include mixins.box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
+      @include mixins.themify(theme.$themes) {
+        border-top: 4px solid mixins.themed("dropdown-border-top-color");
+        background-color: mixins.themed("dropdown-content-background-color");
       }
 
       @media only screen and (max-width: 769px) {
         position: relative;
         display: block;
         box-shadow: none;
-        @include themify($themes) {
+        @include mixins.themify(theme.$themes) {
           border-top: none;
-          background-color: themed("navbar-mobile-background-color");
+          background-color: mixins.themed("navbar-mobile-background-color");
         }
       }
     }
@@ -303,14 +309,14 @@
       font-size: 1rem;
       font-weight: 700;
 
-      @include truncate(150px);
-      @include themify($themes) {
-        color: themed("dropdown-item-color");
-        background-color: themed("navbar-background-color");
-        @include on-event {
-          color: themed("navbar-dropdown-item-hover-color");
-          background-color: themed("navbar-menu-hover-background-color");
-          text-decoration: none;          
+      @include mixins.truncate(150px);
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed("dropdown-item-color");
+        background-color: mixins.themed("navbar-background-color");
+        @include mixins.on-event {
+          color: mixins.themed("navbar-dropdown-item-hover-color");
+          background-color: mixins.themed("navbar-menu-hover-background-color");
+          text-decoration: none;
 
           &:last-child {
             border-bottom-left-radius: 0.15rem;
@@ -333,12 +339,12 @@
 }
 
 .theme {
-  @include flexbox();
-  @include align-items(center);
-  @include justify-content(flex-end);
+  @include flexbox.flexbox();
+  @include flexbox.align-items(center);
+  @include flexbox.justify-content(flex-end);
 
   &[data-ani="true"] {
-    @include animation('slide-in-down .5s .0s 1 ease both');
+    @include mixins.animation('slide-in-down .5s .0s 1 ease both');
   }
 
   @media only screen and (max-width: 769px) {
@@ -346,16 +352,16 @@
   }
 
   .dropdown {
-    height: $grid_navbar_height !important;
+    height: settings.$grid_navbar_height !important;
     position: relative;
 
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(center);    
-    @include themify($themes) {
-      color: themed('burger-menu-color');  
-      @include on-event {
-        color: themed('navbar-title-hover-color');
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.justify-content(center);
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('burger-menu-color');
+      @include mixins.on-event {
+        color: mixins.themed('navbar-title-hover-color');
       }
     }
 
@@ -364,13 +370,13 @@
       cursor: pointer;
       border: none;
       outline: none;
-      width: $grid_navbar_height;
-      height: $grid_navbar_height - 2px;
+      width: settings.$grid_navbar_height;
+      height: settings.$grid_navbar_height - 2px;
 
-      @include themify($themes) {
-        color: themed('burger-menu-color');
-        @include on-event {
-          color: themed('navbar-title-hover-color');
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('burger-menu-color');
+        @include mixins.on-event {
+          color: mixins.themed('navbar-title-hover-color');
         }
       }
     }
@@ -388,7 +394,7 @@
       right: 0;
       display: none;
       height: auto;
-      z-index: z("dropdown");      
+      z-index: functions.z("dropdown");
       border-bottom-left-radius: 0.25rem;
       border-bottom-right-radius: 0.25rem;
 
@@ -396,15 +402,15 @@
         font-size: 0.9rem;
       }
 
-      @include box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
-      @include themify($themes) {
-        border-top: 4px solid themed("dropdown-border-top-color");
-        background-color: themed("dropdown-content-background-color");
+      @include mixins.box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
+      @include mixins.themify(theme.$themes) {
+        border-top: 4px solid mixins.themed("dropdown-border-top-color");
+        background-color: mixins.themed("dropdown-content-background-color");
       }
 
       .is-active {
-        @include themify($themes) {
-          background-color: themed("dropdown-item-active-background-color");
+        @include mixins.themify(theme.$themes) {
+          background-color: mixins.themed("dropdown-item-active-background-color");
         }
       }
     }
@@ -416,12 +422,12 @@
       display: block;
       font-size: 1rem;
 
-      @include no-select;
-      @include themify($themes) {
-        color: themed("dropdown-item-color");
-        @include on-event {
-          color: themed("dropdown-item-hover-color");
-          background-color: themed("dropdown-item-hover-background-color");
+      @include mixins.no-select;
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed("dropdown-item-color");
+        @include mixins.on-event {
+          color: mixins.themed("dropdown-item-hover-color");
+          background-color: mixins.themed("dropdown-item-hover-background-color");
           text-decoration: none;
 
           &:last-child {
@@ -445,16 +451,16 @@
   top: 0;
   right: 35px * 2;
   width: 35px;
-  height: $grid_navbar_height;
+  height: settings.$grid_navbar_height;
   cursor: pointer;
-  z-index: z('modal');
+  z-index: functions.z('modal');
 
   &[data-ani="true"] {
-    @include animation('slide-in-down .5s .4s 1 ease both');
+    @include mixins.animation('slide-in-down .5s .4s 1 ease both');
   }
 
   @media only screen and (max-width: 769px) {
-    @include flexbox();
+    @include flexbox.flexbox();
   }
 
   .dropdown:hover .dropdown-content {
@@ -466,54 +472,54 @@
   padding: 0 0.75rem;
   height: 100%;
   position: relative;
-  
-  @include flexbox();
-  @include align-items(center);
+
+  @include flexbox.flexbox();
+  @include flexbox.align-items(center);
 
   &__menu {
     height: 100%;
     padding: 0 0.75rem;
 
-    @include flexbox();
+    @include flexbox.flexbox();
 
     &--term {
       &[data-index="0"] {
-        @include themify($themes) {
-          border-top: 1px solid themed('search-border-outline-color');
+        @include mixins.themify(theme.$themes) {
+          border-top: 1px solid mixins.themed('search-border-outline-color');
         }
       }
     }
 
     &--item {
-      height: $grid-navbar-height;
+      height: settings.$grid-navbar-height;
 
       & > a {
         height: 100%;
-        font-family: $title-font;
+        font-family: settings.$title-font;
         font-size: 1rem;
         font-weight: bold;
         color: inherit;
         text-decoration: none !important;
         padding: 0 1rem;
-        
-        @include flexbox();
-        @include align-items(center);
-        @include justify-content(flex-start);
+
+        @include flexbox.flexbox();
+        @include flexbox.align-items(center);
+        @include flexbox.justify-content(flex-start);
       }
 
       & svg {
         margin: auto 0.25rem;
       }
 
-      @include themify($themes) {
-        color: themed('body-color');
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('body-color');
         &.active {
           font-weight: bold;
-          color: themed('navbar-title-active-color');
+          color: mixins.themed('navbar-title-active-color');
         }
-        
-        @include on-event {
-          background-color: themed('navbar-menu-hover-background-color');
+
+        @include mixins.on-event {
+          background-color: mixins.themed('navbar-menu-hover-background-color');
         }
       }
     }
@@ -521,7 +527,7 @@
     &--subitem {
       height: 30px;
       padding: 0 2.5rem;
-      
+
       & > a {
         font-size: 0.9rem;
       }
@@ -531,17 +537,17 @@
   &__collapse {
     width: 100%;
     position: absolute;
-    top: $grid-navbar-height;
+    top: settings.$grid-navbar-height;
     left: 0;
     max-height: 0;
     overflow: hidden;
 
-    @include transition(all, 0.15s, ease-out);
-    @include themify($themes) {
-      background-color: themed('navbar-background-color');
-      
+    @include mixins.transition(all, 0.15s, ease-out);
+    @include mixins.themify(theme.$themes) {
+      background-color: mixins.themed('navbar-background-color');
+
       &[data-open="true"] {
-        border-bottom: 2px solid themed('navbar-border-bottom-color');
+        border-bottom: 2px solid mixins.themed('navbar-border-bottom-color');
       }
       &[data-open="false"] {
         border-bottom: none;

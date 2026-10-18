@@ -1,3 +1,8 @@
+@use "sass:color";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .notices {
     position: relative;
     border-radius: .125rem;
@@ -33,7 +38,7 @@
         &::after {
           position: absolute;
           content: attr(data-title);
-          font-family: $title-font;
+          font-family: settings.$title-font;
           font-weight: bold;
           top: -26.5px;
           left: 2rem;
@@ -44,9 +49,9 @@
         a {
             font-weight: bold;
             color: rgba(134, 74, 22, 0.995);
-            @include themify($themes) {
-                @include on-event {
-                    color: themed('link-hover');
+            @include mixins.themify(theme.$themes) {
+                @include mixins.on-event {
+                    color: mixins.themed('link-hover');
                 }
             }
         }
@@ -69,7 +74,7 @@
         p > code, li > code, td > code, code {
             padding: 3px 7px;
             color: rgba(150, 90, 38, 0.995) !important;
-            background-color: darken(#fefaf5, 6%) !important;
+            background-color: color.adjust(#fefaf5, $lightness: -6%) !important;
         }
     }
 
@@ -89,7 +94,7 @@
         &::after {
           position: absolute;
           content: attr(data-title);
-          font-family: $title-font;
+          font-family: settings.$title-font;
           font-weight: bold;
           top: -26.5px;
           left: 2rem;
@@ -100,9 +105,9 @@
         a {
             font-weight: bold;
             color: rgba(116, 40, 40, 0.995);
-            @include themify($themes) {
-                @include on-event {
-                    color: themed('link-hover');
+            @include mixins.themify(theme.$themes) {
+                @include mixins.on-event {
+                    color: mixins.themed('link-hover');
                 }
             }
         }
@@ -125,7 +130,7 @@
         p > code, li > code, td > code, code {
             padding: 3px 7px;
             color: rgba(132, 56, 56, 0.995) !important;
-            background-color: darken(#fbeded, 6%) !important;
+            background-color: color.adjust(#fbeded, $lightness: -6%) !important;
         }
     }
 
@@ -145,7 +150,7 @@
         &::after {
           position: absolute;
           content: attr(data-title);
-          font-family: $title-font;
+          font-family: settings.$title-font;
           font-weight: bold;
           top: -26.5px;
           left: 2rem;
@@ -156,9 +161,9 @@
         a {
             font-weight: bold;
             color: rgba(31, 87, 125, 0.995);
-            @include themify($themes) {
-                @include on-event {
-                    color: themed('link-hover');
+            @include mixins.themify(theme.$themes) {
+                @include mixins.on-event {
+                    color: mixins.themed('link-hover');
                 }
             }
         }
@@ -181,7 +186,7 @@
         p > code, li > code, td > code, code {
             padding: 3px 7px;
             color: rgba(47, 103, 141, 0.995) !important;
-            background-color: darken(#e6f3fb, 6%) !important;
+            background-color: color.adjust(#e6f3fb, $lightness: -6%) !important;
         }
     }
 
@@ -201,7 +206,7 @@
         &::after {
           position: absolute;
           content: attr(data-title);
-          font-family: $title-font;
+          font-family: settings.$title-font;
           font-weight: bold;
           top: -26.5px;
           left: 2rem;
@@ -212,9 +217,9 @@
         a {
             font-weight: bold;
             color: rgba(56, 109, 47, 0.995);
-            @include themify($themes) {
-                @include on-event {
-                    color: themed('link-hover');
+            @include mixins.themify(theme.$themes) {
+                @include mixins.on-event {
+                    color: mixins.themed('link-hover');
                 }
             }
         }
@@ -237,7 +242,7 @@
         p > code, li > code, td > code, code {
             padding: 3px 7px;
             color: rgba(72, 125, 63, 0.995) !important;
-            background-color: darken(#e8f7e6, 6%) !important;
+            background-color: color.adjust(#e8f7e6, $lightness: -6%) !important;
         }
     }
 }

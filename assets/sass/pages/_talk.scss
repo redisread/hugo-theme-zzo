@@ -1,3 +1,8 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .talk {
   &__date {
     border-radius: 0.25rem;
@@ -10,13 +15,13 @@
     position: relative;
 
     &[data-ani="true"] {
-      @include animation('slide-in-left .2s .5s 1 ease both');
+      @include mixins.animation('slide-in-left .2s .5s 1 ease both');
     }
-    
-    @include truncate(100px);
-    @include themify($themes) {
-      color: themed('archive-meta-color');
-      background-color: themed('archive-type-background-color');
+
+    @include mixins.truncate(100px);
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('archive-meta-color');
+      background-color: mixins.themed('archive-type-background-color');
     }
 
     &[data-dir="rtl"] {
@@ -31,7 +36,7 @@
   &__icons {
     padding: 0 0.5rem;
     margin: auto 0;
-    @include flexbox();
+    @include flexbox.flexbox();
 
     svg {
       display: block;
@@ -41,9 +46,9 @@
 
   &__icon {
     margin: auto 0.25rem;
-    
-    @include themify($themes) {
-      color: themed('social-icon-color');
+
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('social-icon-color');
     }
   }
 
@@ -52,26 +57,26 @@
     margin-left: 0.75rem;
 
     &[data-title-wrap^="no"] {
-      @include truncate($grid-max-width);
+      @include mixins.truncate(settings.$grid-max-width);
     }
 
     @media only screen and (max-width: 600px) {
       margin-top: 1rem;
       margin-bottom: 0.5rem;
     }
-    
+
     &[data-dir="ltr"] {
-      @include on-event {
+      @include mixins.on-event {
         &::before {
           content: '';
           position: absolute;
           left: 3rem;
           width: 0.25rem;
           height: 30px;
-          
-          @include themify($themes) {
-            background-color: themed('archive-hover-line-color');
-            
+
+          @include mixins.themify(theme.$themes) {
+            background-color: mixins.themed('archive-hover-line-color');
+
             @media only screen and (max-width:768px) {
               top: 13px;
               left: 0;
@@ -82,7 +87,7 @@
           @media only screen and (max-width: 769px) {
             height: 24px;
             top: 50%;
-            @include translateY(-50%);
+            @include mixins.translateY(-50%);
           }
         }
       }

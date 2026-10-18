@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "../abstracts/mixins";
+@use "../themes/theme";
+
 .button {
   position: relative;
   display: inline-block;
@@ -13,7 +17,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    @include translate(-50%, -50%);
+    @include mixins.translate(-50%, -50%);
   }
 
   &__micro {
@@ -44,37 +48,37 @@
     font-size: 18px;
   }
 
-  @include themify($themes) {
+  @include mixins.themify(theme.$themes) {
     &[data-color="default"] {
-      color: themed('link');
-      border: 1px solid themed('link');
+      color: mixins.themed('link');
+      border: 1px solid mixins.themed('link');
 
-      @include on-event {
-        color: themed('link-hover');
-        border: 1px solid themed('link-hover');
+      @include mixins.on-event {
+        color: mixins.themed('link-hover');
+        border: 1px solid mixins.themed('link-hover');
       }
     }
 
     &[data-color="primary"] {
-      color: themed('button-primary-color');
-      border: 1px solid themed('button-primary-color');
+      color: mixins.themed('button-primary-color');
+      border: 1px solid mixins.themed('button-primary-color');
 
-      @include on-event {
-        color: themed('link-hover');
-        border: 1px solid themed('link-hover');
+      @include mixins.on-event {
+        color: mixins.themed('link-hover');
+        border: 1px solid mixins.themed('link-hover');
       }
     }
 
     &[data-variant="contained"] {
       &[data-color="primary"], &[data-color="default"] {
         color: #111;
-        background: themed('button-primary-color');
-        @include box-shadow(1px, 1px, 3px, 0, themed('share-shadow-color'));
+        background: mixins.themed('button-primary-color');
+        @include mixins.box-shadow(1px, 1px, 3px, 0, mixins.themed('share-shadow-color'));
         border: none;
 
-        @include on-event {
+        @include mixins.on-event {
           color: #111;
-          background: darken(themed('button-primary-color'), 4%);
+          background: color.adjust(mixins.themed('button-primary-color'), $lightness: -4%);
           border: none;
         }
       }

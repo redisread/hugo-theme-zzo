@@ -1,0 +1,15 @@
+<div class="theme">
+  <div class="dropdown">
+    <button class="dropdown-trigger navbar__slide-down" aria-label="Select Language Button" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+      {{ partial "svgs/etc/translate.svg" (dict "width" 22 "height" 22) }}
+    </button>
+    <div class="dropdown-content">
+      {{ $pageLang := .Page.Lang }}
+      {{ range .Page.AllTranslations }}
+        {{ if .Language.Label }}
+          <a href="{{ .RelPermalink }}" data-lang="{{ .Lang }}" class="dropdown-item{{ if eq $pageLang .Lang }} is-active{{ end }}">{{ .Language.Label }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</div>

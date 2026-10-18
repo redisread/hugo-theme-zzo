@@ -1,23 +1,26 @@
+@use "sass:meta";
+@use "../abstracts/settings";
+
 $grid_max_width: 960;
 
-@if global-variable-exists(viewport_size) {
-    @if $viewport_size == widest {
+@if settings.$viewport_size != null {
+    @if settings.$viewport_size == widest {
         $grid_max_width: 1600;
-    } @else if $viewport_size == wider {
+    } @else if settings.$viewport_size == wider {
         $grid_max_width: 1440;
-    } @else if $viewport_size == wide {
+    } @else if settings.$viewport_size == wide {
         $grid_max_width: 1280;
-    } @else if $viewport_size == narrow {
+    } @else if settings.$viewport_size == narrow {
         $grid_max_width: 800;
     } @else {
         $grid_max_width: 960;
     }
 }
 
-$grid_max: $grid_max_width + $grid_max_unit;
-$grid_main_main: $grid_main_main_width + $grid_main_main_unit;
-$grid_main_side: $grid_main_side_width + $grid_main_side_unit;
-$grid_column_gap: $grid_column_gap_width + $grid_column_gap_unit;
+$grid_max: $grid_max_width + settings.$grid_max_unit;
+$grid_main_main: settings.$grid_main_main_width + settings.$grid_main_main_unit;
+$grid_main_side: settings.$grid_main_side_width + settings.$grid_main_side_unit;
+$grid_column_gap: settings.$grid_column_gap_width + settings.$grid_column_gap_unit;
 
 .wrapper {
     display: grid;
@@ -25,9 +28,9 @@ $grid_column_gap: $grid_column_gap_width + $grid_column_gap_unit;
     min-height: 100vh;
     max-width: $grid_max;
     grid-template-columns: minmax(350px, $grid_main_main) minmax(250px, $grid_main_side);
-    grid-template-rows: $grid_navbar_height auto 1fr auto;
+    grid-template-rows: settings.$grid_navbar_height auto 1fr auto;
     grid-column-gap: $grid_column_gap;
-    grid-row-gap: $grid_row_gap;
+    grid-row-gap: settings.$grid_row_gap;
 }
 
 .header-main {

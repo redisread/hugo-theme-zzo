@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../themes/theme";
+
 .switch {
   position: relative;
   width: 28px;
@@ -6,7 +9,7 @@
   margin-left: 1rem;
 
   &[data-ani="true"] {
-    @include animation('slide-in-down-little .2s .3s 1 ease-in backwards');
+    @include mixins.animation('slide-in-down-little .2s .3s 1 ease-in backwards');
   }
 }
 
@@ -24,9 +27,9 @@
   right: 0;
   bottom: 0;
 
-  @include transition(all, 0.2s, ease);
-  @include themify($themes) {
-    background-color: themed('switch-background-color');
+  @include mixins.transition(all, 0.2s, ease);
+  @include mixins.themify(theme.$themes) {
+    background-color: mixins.themed('switch-background-color');
   }
 }
 
@@ -38,26 +41,26 @@
   left: 1.72px;
   bottom: 1.72px;
 
-  @include transition(all, 0.2s, ease);
-  @include themify($themes) {
-    background-color: themed('switch-button-color');
+  @include mixins.transition(all, 0.2s, ease);
+  @include mixins.themify(theme.$themes) {
+    background-color: mixins.themed('switch-button-color');
   }
 }
 
 input:checked + .slider {
-  @include themify($themes) {
-    background-color: themed('switch-active-color');
+  @include mixins.themify(theme.$themes) {
+    background-color: mixins.themed('switch-active-color');
   }
 }
 
 input:focus + .slider {
-  @include themify($themes) {
-    box-shadow: 0 0 1px themed('switch-active-color');
-  }  
+  @include mixins.themify(theme.$themes) {
+    box-shadow: 0 0 1px mixins.themed('switch-active-color');
+  }
 }
 
 input:checked + .slider:before {
-  @include translateX(13px);
+  @include mixins.translateX(13px);
 }
 
 /* Rounded sliders */

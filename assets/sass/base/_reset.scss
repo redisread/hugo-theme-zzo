@@ -1,3 +1,6 @@
+@use "../abstracts/mixins";
+@use "../themes/theme";
+
 // -----------------------------------------------------------------------------
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
@@ -25,12 +28,12 @@ html {
  * Basic styles for links
  */
 a {
-  @include themify($themes) {
+  @include mixins.themify(theme.$themes) {
     text-decoration: none;
-    color: themed("link");
+    color: mixins.themed("link");
 
-    @include on-event {
-      color: themed("link-hover");
+    @include mixins.on-event {
+      color: mixins.themed("link-hover");
       text-decoration: underline;
     }
   }
@@ -127,10 +130,10 @@ figcaption {
   font-size: 0.9rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-  @include themify($themes) {
-    color: themed("figcaption-color");
+  @include mixins.themify(theme.$themes) {
+    color: mixins.themed("figcaption-color");
     strong {
-      color: themed("figcaption-strong-color");
+      color: mixins.themed("figcaption-strong-color");
     }
   }
 }
@@ -144,15 +147,15 @@ pre {
 
 ::-moz-selection {
   /* Code for Firefox */
-  @include themify($themes) {
-    color: themed("selection-color");
-    background: themed("selection-background-color");
+  @include mixins.themify(theme.$themes) {
+    color: mixins.themed("selection-color");
+    background: mixins.themed("selection-background-color");
   }
 }
 
 ::selection {
-  @include themify($themes) {
-    color: themed("selection-color");
-    background: themed("selection-background-color");
+  @include mixins.themify(theme.$themes) {
+    color: mixins.themed("selection-color");
+    background: mixins.themed("selection-background-color");
   }
 }

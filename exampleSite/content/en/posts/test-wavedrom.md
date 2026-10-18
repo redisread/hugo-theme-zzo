@@ -5,10 +5,8 @@ description: "WaveDrom is a Free and Open Source online digital timing diagram (
 draft: false
 enableToc: false
 enableTocContent: false
-tags:
--
-series:
--
+tags: []
+series: []
 categories:
 - diagram
 libraries:

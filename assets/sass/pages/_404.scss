@@ -1,19 +1,24 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .not-found {
   height: 100%;
-  font-family: $title-font;
+  font-family: settings.$title-font;
 
-  @include flexbox();
-  @include align-items(center);
-  @include justify-content(center);
-  @include flex-direction(column);
+  @include flexbox.flexbox();
+  @include flexbox.align-items(center);
+  @include flexbox.justify-content(center);
+  @include flexbox.flex-direction(column);
 
-  @include themify($themes) {
+  @include mixins.themify(theme.$themes) {
     .title {
-      color: themed('title-color');
+      color: mixins.themed('title-color');
     }
 
     .subtitle {
-      color: themed('meta-color');
+      color: mixins.themed('meta-color');
     }
   }
 }

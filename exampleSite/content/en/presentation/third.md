@@ -2,12 +2,9 @@
 title: "Third"
 date: 2019-10-30T20:46:30+09:00
 description: "My third presentation"
-tags:
--
-series:
--
-categories:
--
+tags: []
+series: []
+categories: []
 image: images/feature1/number-three.png
 plugins:
 - highlight

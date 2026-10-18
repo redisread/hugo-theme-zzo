@@ -5,10 +5,8 @@ description: "A JavaScript display engine for mathematics that works in all brow
 draft: false
 enableToc: false
 enableTocContent: false
-tags:
-- 
-series:
--
+tags: []
+series: []
 categories:
 - math
 libraries:

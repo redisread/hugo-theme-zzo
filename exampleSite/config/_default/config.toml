@@ -12,11 +12,11 @@ buildFuture = true
 copyright = "&copy;{year}, All Rights Reserved"
 timeout = 10000
 enableEmoji = true
-paginate = 13
+pagination.pagerSize = 13
 rssLimit = 100
 
 enableGitInfo = false
-googleAnalytics = ""
+services.googleAnalytics.ID = ""
 
 [markup]
   [markup.goldmark]
@@ -37,8 +37,8 @@ googleAnalytics = ""
 [outputs]
   home = ["HTML", "RSS", "SearchIndex"]
   section = ["HTML", "RSS", "SearchIndex"]
-  taxonomyTerm = ["HTML", "RSS", "SearchIndex"]
   taxonomy = ["HTML", "RSS", "SearchIndex"]
+  term = ["HTML", "RSS", "SearchIndex"]
 
 [outputFormats]
   [outputFormats.SearchIndex]

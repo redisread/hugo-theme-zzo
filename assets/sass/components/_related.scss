@@ -1,3 +1,8 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .related {
   margin: 2rem auto;
   padding: 0.5rem;
@@ -5,29 +10,29 @@
   max-width: 700px;
   position: relative;
 
-  @include flexbox();
-  @include align-items(center);
-  @include flex-direction(column);
+  @include flexbox.flexbox();
+  @include flexbox.align-items(center);
+  @include flexbox.flex-direction(column);
 
   &__title {
     font-size: 32px;
-    
-    @include themify($themes) {
-      color: themed('related-header-title-color');
+
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('related-header-title-color');
     }
   }
 
   &__link {
     font-size: 16.8px;
-    font-family: $title-font;
-    
-    @include themify($themes) {
-      color: themed('related-link-color');
+    font-family: settings.$title-font;
+
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('related-link-color');
     }
   }
 
   &-ul {
-    @include align-self(center);
+    @include flexbox.align-self(center);
     list-style-type: disc;
   }
 }

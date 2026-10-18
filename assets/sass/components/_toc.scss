@@ -1,18 +1,24 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/functions";
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+@use "../themes/theme";
+
 .toc {
   width: 100%;
-  max-width: $sidebar-width;
+  max-width: variables.$sidebar-width;
   position: fixed;
   overflow-y: auto;
   top: 7rem;
   font-size: 0.85rem;
-  z-index: z("toc");
+  z-index: functions.z("toc");
 
-  @include themify($themes) {
-    @include webkit-scrollbars(
-      themed("custom-scrollbar-foreground-color"),
-      themed("custom-scrollbar-background-color")
+  @include mixins.themify(theme.$themes) {
+    @include mixins.webkit-scrollbars(
+      mixins.themed("custom-scrollbar-foreground-color"),
+      mixins.themed("custom-scrollbar-background-color")
     );
-    @include moz-scrollbars(themed("custom-scrollbar-foreground-color"), themed("custom-scrollbar-background-color"));
+    @include mixins.moz-scrollbars(mixins.themed("custom-scrollbar-foreground-color"), mixins.themed("custom-scrollbar-background-color"));
   }
 
   &[data-dir="rtl"] {
@@ -23,18 +29,18 @@
   }
 
   &[data-ani="true"] {
-    @include animation("slide-in-down-little .2s .3s 1 ease-in backwards");
+    @include mixins.animation("slide-in-down-little .2s .3s 1 ease-in backwards");
   }
 
-  @include no-select;
+  @include mixins.no-select;
 
   #TableOfContents {
     position: relative;
   }
 
   &__flexbox[data-position="fixed"] {
-    @include flexbox();
-    @include align-items(center);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
     position: fixed;
 
     .toc__title {
@@ -44,14 +50,14 @@
   }
 
   &__flexbox[data-position="absolute"] {
-    @include flexbox();
-    @include align-items(center);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
     position: absolute;
   }
 
   &__flexbox--outer[data-position="fixed"] {
-    @include flexbox();
-    @include align-items(center);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
     top: 4.2rem;
     left: 1rem;
     position: absolute;
@@ -61,7 +67,7 @@
     }
 
     &[data-ani="true"] {
-      @include animation("slide-in-down-little .2s .3s 1 ease-in backwards");
+      @include mixins.animation("slide-in-down-little .2s .3s 1 ease-in backwards");
     }
   }
 
@@ -85,11 +91,11 @@
     margin-top: 0.5rem;
 
     &[data-ani="true"] {
-      @include animation("slide-in-down-little .2s .3s 1 ease-in backwards");
+      @include mixins.animation("slide-in-down-little .2s .3s 1 ease-in backwards");
     }
 
-    @include themify($themes) {
-      color: themed("toc-label-color");
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed("toc-label-color");
     }
 
     &--outer {
@@ -101,9 +107,9 @@
 
   &[data-dir="ltr"] {
     &[data-folding="true"] {
-      @include themify($themes) {
+      @include mixins.themify(theme.$themes) {
         a {
-          color: themed("toc-vertical-line");
+          color: mixins.themed("toc-vertical-line");
           position: relative;
           padding-left: 0.25rem;
 
@@ -113,7 +119,7 @@
             left: -0.5rem;
             position: absolute;
             width: 2px;
-            background-color: themed("toc-vertical-line");
+            background-color: mixins.themed("toc-vertical-line");
             &:last-child {
               background-color: transparent;
             }
@@ -121,25 +127,25 @@
         }
 
         .active {
-          color: themed("toc-vertical-line-active");
+          color: mixins.themed("toc-vertical-line-active");
           font-weight: 700;
           &::before {
-            background-color: themed("toc-vertical-line-active");
+            background-color: mixins.themed("toc-vertical-line-active");
           }
         }
       }
     }
 
     &[data-folding="false"] {
-      @include themify($themes) {
+      @include mixins.themify(theme.$themes) {
         a {
-          color: themed("toc-vertical-line");
+          color: mixins.themed("toc-vertical-line");
 
           &.active {
-            color: themed("toc-vertical-line-active");
+            color: mixins.themed("toc-vertical-line-active");
 
             &::before {
-              background-color: themed("toc-vertical-line-active");
+              background-color: mixins.themed("toc-vertical-line-active");
               content: "";
               height: 0.95rem;
               left: -0.5rem;
@@ -156,11 +162,11 @@
     }
 
     ul {
-      @include themify($themes) {
+      @include mixins.themify(theme.$themes) {
         li {
           li {
             margin-left: 1rem;
-            color: themed("sidebar-li-color");
+            color: mixins.themed("sidebar-li-color");
           }
         }
       }
@@ -169,9 +175,9 @@
 
   &[data-dir="rtl"] {
     &[data-folding="true"] {
-      @include themify($themes) {
+      @include mixins.themify(theme.$themes) {
         a {
-          color: themed("toc-vertical-line");
+          color: mixins.themed("toc-vertical-line");
           position: relative;
           padding-right: 0.25rem;
 
@@ -181,7 +187,7 @@
             right: -0.5rem;
             position: absolute;
             width: 2px;
-            background-color: themed("toc-vertical-line");
+            background-color: mixins.themed("toc-vertical-line");
             &:last-child {
               background-color: transparent;
             }
@@ -189,25 +195,25 @@
         }
 
         .active {
-          color: themed("toc-vertical-line-active");
+          color: mixins.themed("toc-vertical-line-active");
           font-weight: 700;
           &::before {
-            background-color: themed("toc-vertical-line-active");
+            background-color: mixins.themed("toc-vertical-line-active");
           }
         }
       }
     }
 
     &[data-folding="false"] {
-      @include themify($themes) {
+      @include mixins.themify(theme.$themes) {
         a {
-          color: themed("toc-vertical-line");
+          color: mixins.themed("toc-vertical-line");
 
           &.active {
-            color: themed("toc-vertical-line-active");
+            color: mixins.themed("toc-vertical-line-active");
 
             &::before {
-              background-color: themed("toc-vertical-line-active");
+              background-color: mixins.themed("toc-vertical-line-active");
               content: "";
               height: 0.95rem;
               right: -0.5rem;
@@ -224,11 +230,11 @@
     }
 
     ul {
-      @include themify($themes) {
+      @include mixins.themify(theme.$themes) {
         li {
           li {
             margin-right: 1rem;
-            color: themed("sidebar-li-color");
+            color: mixins.themed("sidebar-li-color");
           }
         }
       }
@@ -236,11 +242,11 @@
   }
 
   ul {
-    @include themify($themes) {
+    @include mixins.themify(theme.$themes) {
       a {
-        color: themed("toc-title-color");
+        color: mixins.themed("toc-title-color");
         &.active {
-          color: themed("toc-vertical-line-active");
+          color: mixins.themed("toc-vertical-line-active");
         }
       }
     }
