@@ -1,8 +1,8 @@
-> **This fork requires Hugo 0.168.0 and Dart Sass 1.105.2.** See [build instructions and migration guide](docs/hugo-upgrade.md). Upstream setup instructions below describe the legacy theme.
+> **This fork requires Hugo 0.168.0 and Dart Sass 1.105.2.** See [build instructions and migration guide](docs/hugo-upgrade.md). The migration guide takes precedence over upstream documentation.
 
 # Zzo theme for Hugo
 
-[English](https://github.com/zzossig/hugo-theme-zzo/blob/master/README.md) | 
+[English](README.md) |
 한국어
 
 🔥🔥🔥
@@ -59,7 +59,7 @@ Zzo theme을 이용할 시 가장 매력적인 포인트 한가지는, 한글로
 
 ## Minimum Hugo version
 
-최소 요구 Hugo 버전은 0.60.0 입니다.
+Hugo 0.168.0 및 Dart Sass 1.105.2가 필요합니다. 설치 및 마이그레이션은 [가이드](docs/hugo-upgrade.md)를 참고하세요.
 
 ## Installation
 
@@ -71,7 +71,7 @@ Zzo theme을 이용할 시 가장 매력적인 포인트 한가지는, 한글로
 업데이트 하고 싶으시면 해당 Zzo theme을 지우고 다시 다운로드 한 다음, 복붙하시면 되겠습니다.
 
 ```bash
-$ git clone https://github.com/zzossig/hugo-theme-zzo.git themes/zzo
+$ git clone https://github.com/redisread/hugo-theme-zzo.git themes/zzo
 ```
 
 깃헙을 이용하여 블로그를 관리하신다면, 섭모듈을 사용하여 Zzo theme을 쉽게 최신버전으로 유지하실 수 있습니다.
@@ -79,7 +79,7 @@ $ git clone https://github.com/zzossig/hugo-theme-zzo.git themes/zzo
 루트 폴더에서 다음 코드를 입력해주시면 submodule로써 Zzo theme이 설치됩니다:
 
 ```bash
-git submodule add https://github.com/zzossig/hugo-theme-zzo.git themes/zzo
+git submodule add https://github.com/redisread/hugo-theme-zzo.git themes/zzo
 ```
 
 ## Updating
@@ -140,11 +140,11 @@ buildFuture = true # if true, we can use future date for talks page
 copyright = "©{year}, All Rights Reserved" # copyright symbol: $copy; current year: {year}
 timeout = 10000
 enableEmoji = true
-paginate = 13 # Number of items per page in paginated lists.
+pagination.pagerSize = 13 # Number of items per page in paginated lists.
 rssLimit = 100
 
 enableGitInfo = false # When true, the modified date will appear on a summary and single page. Since GitHub info needs to be fetched, this feature will slow down to build depending on a page number you have
-googleAnalytics = ""
+services.googleAnalytics.ID = ""
 
 [markup]
   [markup.goldmark]
@@ -163,7 +163,16 @@ googleAnalytics = ""
     startLevel = 2
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "SearchIndex"]
+  section = ["HTML", "RSS", "SearchIndex"]
+  taxonomy = ["HTML", "RSS", "SearchIndex"]
+  term = ["HTML", "RSS", "SearchIndex"]
+
+[outputFormats.SearchIndex]
+  mediaType = "application/json"
+  baseName = "index"
+  isPlainText = true
+  notAlternative = true
 
 [taxonomies]
   category = "categories"
@@ -176,12 +185,12 @@ googleAnalytics = ""
 ```bash
 [en]
   title = "Hugo Zzo Theme"
-  languageName = "English"
+  label = "English"
   weight = 1
 
 [ko]
   title = "Hugo Zzo Theme"
-  languageName = "한국어"
+  label = "한국어"
   weight = 2
 ```
 
@@ -985,7 +994,7 @@ content_font = "\"Merriweather\", serif"
 
 5. 다른 방식
 
-root/layouts/partials/head/custom-head.html 경로에 파일을 만드시고 폰트를 그곳에서 로드해주세요.
+root/layouts/_partials/head/custom-head.html 경로에 파일을 만드시고 폰트를 그곳에서 로드해주세요.
 
 ```html
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean" rel="stylesheet">
