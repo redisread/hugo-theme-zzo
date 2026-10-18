@@ -1,28 +1,31 @@
+@use "sass:color";
+@use "../abstracts/settings";
+
 $solarizedcode: '';
 
-@if $theme_solarized_chroma_background == dark {
+@if settings.$theme_solarized_chroma_background == dark {
   $solarizedcode: (
     content-code-color: #fcfcfa,
     content-pre-main-color: #FFA7C4,
     content-pre-color: #eee,
     content-pre-number-color: #666,
     content-pre-background-color: #171f2e,
-    content-pre-header-background-color: darken(#011627, 1.5%),
+    content-pre-header-background-color: color.adjust(#011627, $lightness: -1.5%),
     content-pre-border-background-color: #3a3a3a,
     content-pre-header-color: #FCFCFA,
   );
-} @else if $theme_solarized_chroma_background == light {
+} @else if settings.$theme_solarized_chroma_background == light {
   $solarizedcode: (
     content-code-color: #26a69a,
     content-pre-main-color: #607d8b,
     content-pre-color: #344952,
     content-pre-number-color: #aaa,
     content-pre-background-color: #F5F2F0,
-    content-pre-border-background-color: darken(#F5F2F0, 7%),
-    content-pre-header-background-color: darken(#F5F2F0, 3%),
+    content-pre-border-background-color: color.adjust(#F5F2F0, $lightness: -7%),
+    content-pre-header-background-color: color.adjust(#F5F2F0, $lightness: -3%),
     content-pre-header-color: #344952,
   );
-} @else if $theme_solarized_chroma_background == hacker {
+} @else if settings.$theme_solarized_chroma_background == hacker {
   $solarizedcode: (
     content-code-color: #E3CD26,
     content-pre-main-color: #1FFF2A,
@@ -30,21 +33,21 @@ $solarizedcode: '';
     content-pre-number-color: #666,
     content-pre-background-color: #282a36,
     content-pre-border-background-color: #424242,
-    content-pre-header-background-color: darken(#202420, 1.5%),
+    content-pre-header-background-color: color.adjust(#202420, $lightness: -1.5%),
     content-pre-header-color: #FCFCFA,
   );
-} @else if $theme_solarized_chroma_background == solarized {
+} @else if settings.$theme_solarized_chroma_background == solarized {
   $solarizedcode: (
     content-code-color: #268bd2,
     content-pre-main-color: #B58900,
     content-pre-color: #344952,
     content-pre-number-color: #aaa,
     content-pre-background-color: #faf1cd,
-    content-pre-border-background-color: darken(#FBF1D1, 12%),
-    content-pre-header-background-color: darken(#FBF1D1, 6%),
+    content-pre-border-background-color: color.adjust(#FBF1D1, $lightness: -12%),
+    content-pre-header-background-color: color.adjust(#FBF1D1, $lightness: -6%),
     content-pre-header-color: #344952,
   );
-} @else if $theme_solarized_chroma_background == kimbie {
+} @else if settings.$theme_solarized_chroma_background == kimbie {
   $solarizedcode: (
     content-code-color: #f06431,
     content-pre-main-color: #dc3958,
@@ -52,7 +55,7 @@ $solarizedcode: '';
     content-pre-number-color: #666,
     content-pre-background-color: #362712,
     content-pre-header-color: #8ab1b0,
-    content-pre-header-background-color: lighten(#362712, 3%),
+    content-pre-header-background-color: color.adjust(#362712, $lightness: 3%),
     content-pre-border-background-color: #e3b583,
   );
 } @else {
@@ -62,8 +65,8 @@ $solarizedcode: '';
     content-pre-color: #344952,
     content-pre-number-color: #aaa,
     content-pre-background-color: #f9fbe7,
-    content-pre-border-background-color: darken(#FBF1D1, 8%),
-    content-pre-header-background-color: darken(#FBF1D1, 2.5%),
+    content-pre-border-background-color: color.adjust(#FBF1D1, $lightness: -8%),
+    content-pre-header-background-color: color.adjust(#FBF1D1, $lightness: -2.5%),
     content-pre-header-color: #344952,
   );
 }

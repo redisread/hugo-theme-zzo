@@ -2,12 +2,9 @@
 title: "First"
 date: 2019-10-30T19:45:20+09:00
 description: "My first presentation"
-tags:
--
-series:
--
-categories:
--
+tags: []
+series: []
+categories: []
 image: images/feature1/number-one.png
 revealBackgroundColor: "" # #fff or rgba() or hsl()
 revealBackgroundImage: "" # /images/myImage.png   <= static folder path

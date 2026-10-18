@@ -1,19 +1,22 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/settings";
+
 .busuanzi {
-  @include flexbox();
+  @include flexbox.flexbox();
   width: 250px;
 
   &__item {
     padding: 0.125rem;
 
-    @include flexbox();
-    @include flex-direction(column);
-    @include align-items(center);
-    @include flex-grow(1);
+    @include flexbox.flexbox();
+    @include flexbox.flex-direction(column);
+    @include flexbox.align-items(center);
+    @include flexbox.flex-grow(1);
 
     &--label {
       font-size: 12.8px;
       padding: .125rem 0;
-      font-family: $title-font;
+      font-family: settings.$title-font;
       font-style: italic;
     }
 

@@ -5,10 +5,8 @@ description: "Simple yet flexible JavaScript charting for designers & developers
 draft: false
 enableToc: false
 enableTocContent: false
-tags:
--
-series:
--
+tags: []
+series: []
 categories:
 - diagram
 libraries:

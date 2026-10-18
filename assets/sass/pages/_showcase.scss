@@ -1,10 +1,16 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/functions";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .showcase {
   padding: 0.75rem 1.5rem;
 
   &__bio {
     position: -webkit-sticky;
     position: sticky;
-    top: $grid_navbar_height * 1.25;
+    top: settings.$grid_navbar_height * 1.25;
     display: block;
     margin-top: 0.5rem;
 
@@ -16,16 +22,16 @@
   &__nav {
     padding: 0.5rem 0;
     margin-bottom: 0.5rem;
-    
-    @include themify($themes) {
-      border-bottom: 1px solid themed('hr-color');
+
+    @include mixins.themify(theme.$themes) {
+      border-bottom: 1px solid mixins.themed('hr-color');
     }
   }
 
   &__button {
     border: none;
     outline: none;
-    font-family: $title-font;
+    font-family: settings.$title-font;
     font-size: 0.95rem;
     border-top-left-radius: 0.125rem;
     border-top-right-radius: 0.125rem;
@@ -36,10 +42,10 @@
     display: inline-block;
     cursor: pointer;
 
-    @include themify($themes) {
-      color: themed('navbar-title-color');
-      @include on-event {
-        color: themed('navbar-title-hover-color');
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('navbar-title-color');
+      @include mixins.on-event {
+        color: mixins.themed('navbar-title-hover-color');
       }
     }
 
@@ -50,16 +56,16 @@
       border-radius: 0.25rem;
       margin: auto;
       font-size: 12px;
-      
-      @include themify($themes) {
-        color: themed('taxo-num-color');
-        background-color: themed('taxo-num-background-color');
+
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('taxo-num-color');
+        background-color: mixins.themed('taxo-num-background-color');
       }
     }
 
     &.active {
-      @include themify($themes) {
-        color: themed('navbar-title-active-color');
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('navbar-title-active-color');
       }
     }
   }
@@ -96,16 +102,16 @@
       }
     }
 
-    @include flexbox();
-    @include flex-grow(1);
-    @include flex-direction(column);
-    @include justify-content(flex-start);
-    @include themify($themes) {
-      border: 1px solid themed('content-box-border-color');
+    @include flexbox.flexbox();
+    @include flexbox.flex-grow(1);
+    @include flexbox.flex-direction(column);
+    @include flexbox.justify-content(flex-start);
+    @include mixins.themify(theme.$themes) {
+      border: 1px solid mixins.themed('content-box-border-color');
     }
 
-    @include on-event {
-      @include box-shadow(1px, 1px, 3px, 0px, rgba(0, 0, 0, 0.25));
+    @include mixins.on-event {
+      @include mixins.box-shadow(1px, 1px, 3px, 0px, rgba(0, 0, 0, 0.25));
       background-color: rgba(125, 125, 125, 0.1);
     }
 
@@ -119,25 +125,25 @@
     }
 
     &--wrapper {
-      @include flexbox();
-      @include justify-content(flex-start);
-      @include flex-wrap(wrap);
+      @include flexbox.flexbox();
+      @include flexbox.justify-content(flex-start);
+      @include flexbox.flex-wrap(wrap);
 
       &[data-ani="true"] {
-        @include animation('slide-in-left-little .2s .25s 1 ease-in both');
+        @include mixins.animation('slide-in-left-little .2s .25s 1 ease-in both');
       }
     }
 
     &--title {
       word-break: break-word;
-      font-family: $title-font;
+      font-family: settings.$title-font;
       font-size: 1rem;
       font-weight: bold;
       margin-bottom: 0.5rem;
       cursor: pointer;
 
-      @include themify($themes) {
-        color: themed('title-color');
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('title-color');
       }
     }
 
@@ -161,26 +167,26 @@
         max-height: 225px;
       }
 
-      @include flexbox();
-      @include justify-content(center);
-      @include align-items(center);
+      @include flexbox.flexbox();
+      @include flexbox.justify-content(center);
+      @include flexbox.align-items(center);
     }
 
     &--meta {
       margin-top: 0.25rem;
 
-      @include flexbox();
-      @include flex-wrap(wrap);
-      @include justify-content(flex-end);
+      @include flexbox.flexbox();
+      @include flexbox.flex-wrap(wrap);
+      @include flexbox.justify-content(flex-end);
 
       .type {
         font-size: 12px;
         text-transform: capitalize;
         margin-top: 0.25rem;
 
-        @include flexbox();
-        @include themify($themes) {
-          color: themed('meta-color');
+        @include flexbox.flexbox();
+        @include mixins.themify(theme.$themes) {
+          color: mixins.themed('meta-color');
         }
 
         svg {
@@ -194,13 +200,13 @@
       }
 
       a.type {
-        z-index: z('card-outter');
+        z-index: functions.z('card-outter');
         text-decoration: none;
         cursor: pointer;
 
-        @include themify($themes) {
-          @include on-event {
-            color: themed('link-hover');
+        @include mixins.themify(theme.$themes) {
+          @include mixins.on-event {
+            color: mixins.themed('link-hover');
           }
         }
       }
@@ -209,8 +215,8 @@
     &--shields {
       margin-top: 0.25rem;
 
-      @include flexbox();
-      @include flex-wrap(wrap);
+      @include flexbox.flexbox();
+      @include flexbox.flex-wrap(wrap);
 
       a.type {
         margin-right: 0.5rem;
@@ -218,7 +224,7 @@
     }
 
     &--link {
-      z-index: z('card-inner');
+      z-index: functions.z('card-inner');
       position: absolute;
       left: 0;
       top: 0;

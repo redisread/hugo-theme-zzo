@@ -11,8 +11,7 @@ authorEmoji: 🎅
 pinned: true
 tags:
 - hugo
-series:
--
+series: []
 categories:
 - hugo
 image: images/feature2/color-palette.png

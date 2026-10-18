@@ -1,9 +1,14 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .resume {
   padding: 1rem;
   font-size: 1rem;
 
-  @include flexbox();
-  @include flex-direction(column);
+  @include flexbox.flexbox();
+  @include flexbox.flex-direction(column);
   @media only screen and (max-width: 769px) {
     padding: 0;
   }
@@ -14,41 +19,41 @@
     }
 
     &--name {
-      font-family: $title-font;
+      font-family: settings.$title-font;
       font-size: 1.75rem;
       font-weight: 900;
     }
 
     &--info {
-      
+
     }
   }
 
   &__section {
-    @include flexbox();
-    
+    @include flexbox.flexbox();
+
     @media only screen and (max-width: 769px) {
-      @include flex-direction(column);
+      @include flexbox.flex-direction(column);
     }
 
-    @include themify($themes) {
+    @include mixins.themify(theme.$themes) {
       &--sectiontitle {
-        font-family: $title-font;
+        font-family: settings.$title-font;
         padding: 0 1rem;
         font-size: 1.25rem;
-        color: themed('gtt-color');
+        color: mixins.themed('gtt-color');
       }
 
       &--title {
-        font-family: $title-font;
+        font-family: settings.$title-font;
         font-size: 1.125rem;
-        color: themed('meta-color');
+        color: mixins.themed('meta-color');
 
-        @include flexbox();
-        @include align-items(center);
+        @include flexbox.flexbox();
+        @include flexbox.align-items(center);
         @media only screen and (max-width: 769px) {
-          @include flex-direction(column);
-          @include align-items(flex-start);
+          @include flexbox.flex-direction(column);
+          @include flexbox.align-items(flex-start);
         }
       }
 
@@ -57,7 +62,7 @@
       }
 
       &--subtitle {
-        
+
       }
 
       &--contents {
@@ -92,8 +97,8 @@
         display: block;
         text-align: right;
 
-        @include flexbox();
-        @include flex-direction(column);
+        @include flexbox.flexbox();
+        @include flexbox.flex-direction(column);
         @media only screen and (max-width: 769px) {
           width: 100%;
         }
@@ -122,8 +127,8 @@
         display: block;
         text-align: left;
 
-        @include flexbox();
-        @include flex-direction(column);
+        @include flexbox.flexbox();
+        @include flexbox.flex-direction(column);
         @media only screen and (max-width: 769px) {
           width: 100%;
         }

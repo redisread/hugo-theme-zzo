@@ -1,3 +1,8 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .tab {
   position: relative;
   padding: 0.5rem 0;
@@ -7,10 +12,10 @@
     height: 30px;
     border-top-left-radius: 0.25rem;
 
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(flex-start);
-    @include flex-wrap(wrap);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.justify-content(flex-start);
+    @include flexbox.flex-wrap(wrap);
   }
 
   &__link {
@@ -18,27 +23,27 @@
     border: none;
     cursor: pointer;
     font-size: 13.8px;
-    font-family: $title-font;
+    font-family: settings.$title-font;
     text-transform: capitalize;
     padding: 0.5rem 0.75rem;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
-    
-    @include themify($themes) {
-      color: themed('navbar-title-color');
-      background-color: themed('body-background-color');
+
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('navbar-title-color');
+      background-color: mixins.themed('body-background-color');
       border: none;
-      border-bottom: 1px solid themed('hr-color');
+      border-bottom: 1px solid mixins.themed('hr-color');
 
       &.active {
-        background-color: themed('body-background-color');
-        border: 1px solid themed('hr-color');
+        background-color: mixins.themed('body-background-color');
+        border: 1px solid mixins.themed('hr-color');
         border-bottom: none;
       }
 
-      @include on-event {
-        color: themed('navbar-title-hover-color');
-        background-color: themed('content-pre-header-background-color');
+      @include mixins.on-event {
+        color: mixins.themed('navbar-title-hover-color');
+        background-color: mixins.themed('content-pre-header-background-color');
       }
     }
   }
@@ -49,9 +54,9 @@
     border-radius: 0.25rem;
     border-top-left-radius: 0;
 
-    @include themify($themes) {
-      border: 1px solid themed('hr-color');
-      background-color: themed('body-background-color');
+    @include mixins.themify(theme.$themes) {
+      border: 1px solid mixins.themed('hr-color');
+      background-color: mixins.themed('body-background-color');
     }
   }
 }

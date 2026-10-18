@@ -1,3 +1,9 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/functions";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .codetab {
   position: relative;
 
@@ -6,14 +12,14 @@
     top: 0;
     left: 0;
     height: 30px;
-    z-index: z('clipboard');
+    z-index: functions.z('clipboard');
     border-top-left-radius: 0.25rem;
 
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(flex-start);
-    @include themify($codeblock) {
-      background-color: themed('content-pre-header-background-color');
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.justify-content(flex-start);
+    @include mixins.themify(theme.$codeblock) {
+      background-color: mixins.themed('content-pre-header-background-color');
     }
   }
 
@@ -23,32 +29,32 @@
     outline: none;
     cursor: pointer;
     font-size: 13.8px;
-    font-family: $title-font;
+    font-family: settings.$title-font;
     text-transform: capitalize;
     padding: 0.25rem 0.5rem;
 
     &:first-child {
       border-top-left-radius: 0.25rem;
     }
-    
-    @include transition(all, 0.2s, ease-in);
-    @include themify($themes) {
-      color: themed('navbar-title-color');
+
+    @include mixins.transition(all, 0.2s, ease-in);
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('navbar-title-color');
       border-top: 1px solid transparent;
       &.active {
-        border-top: 1px solid themed('content-pre-header-background-color');
+        border-top: 1px solid mixins.themed('content-pre-header-background-color');
       }
     }
 
-    @include themify($codeblock) {
-      background-color: themed('content-pre-header-background-color');
+    @include mixins.themify(theme.$codeblock) {
+      background-color: mixins.themed('content-pre-header-background-color');
 
       &.active {
-        background-color: themed('content-pre-background-color');
+        background-color: mixins.themed('content-pre-background-color');
       }
 
-      @include on-event {
-        background-color: themed('content-pre-background-color');
+      @include mixins.on-event {
+        background-color: mixins.themed('content-pre-background-color');
       }
     }
   }

@@ -5,10 +5,8 @@ description: "Generates UML sequence diagrams from simple text"
 draft: false
 enableToc: false
 enableTocContent: false
-tags:
--
-series:
--
+tags: []
+series: []
 categories:
 - diagram
 libraries:

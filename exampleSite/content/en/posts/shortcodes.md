@@ -9,10 +9,8 @@ enableTocContent: true
 tocPosition: inner
 tags:
 - shortcode
-series:
--
-categories:
--
+series: []
+categories: []
 image: images/feature3/code-file.png
 ---
 

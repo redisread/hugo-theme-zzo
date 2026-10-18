@@ -1,0 +1,14 @@
+{{ $options := dict "targetPath" "css/main.css" "outputStyle" "compressed" "transpiler" "dartsass" }}
+{{ $source := resources.Get "sass/main.scss" | resources.ExecuteAsTemplate "sass/main.rendered.scss" . }}
+{{ $style := $source | css.Sass $options | resources.Minify }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+{{ range .Site.Params.custom_css }}
+  {{ with resources.Get . }}
+    {{ $custom := . }}
+    {{ if in (slice "sass" "scss" "x-sass" "x-scss") .MediaType.SubType }}
+      {{ $custom = . | css.Sass (dict "transpiler" "dartsass" "outputStyle" "compressed") }}
+    {{ end }}
+    {{ $custom = $custom | resources.Minify }}
+    <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
+  {{ end }}
+{{ end }}

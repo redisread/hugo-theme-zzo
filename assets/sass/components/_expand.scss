@@ -1,3 +1,8 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .expand {
   position: relative;
   margin: 1.5rem 0;
@@ -10,10 +15,10 @@
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
 
-    @include transition(all, 0.2s, ease);
-    @include themify($themes) {
-      border-top: 1px solid themed('content-box-border-color');
-      background-color: themed('toc-body-background-color');
+    @include mixins.transition(all, 0.2s, ease);
+    @include mixins.themify(theme.$themes) {
+      border-top: 1px solid mixins.themed('content-box-border-color');
+      background-color: mixins.themed('toc-body-background-color');
     }
 
     li {
@@ -31,7 +36,7 @@
     }
 
     &--toc {
-      font-family: $title-font;
+      font-family: settings.$title-font;
       font-size: 15.2px;
       li {
         list-style-type: '📂 ';
@@ -51,39 +56,39 @@
     border: none;
     padding: 0.125rem;
     font-size: 1rem;
-    font-family: $title-font;
+    font-family: settings.$title-font;
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
 
-    @include flexbox();
-    @include align-items(center);
-    @include themify($themes) {
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include mixins.themify(theme.$themes) {
       color: inherit;
-      background-color: themed('toc-header-background-color');
-      @include on-event {
-        background-color: themed('toc-header-background-color-hover');
+      background-color: mixins.themed('toc-header-background-color');
+      @include mixins.on-event {
+        background-color: mixins.themed('toc-header-background-color-hover');
       }
     }
   }
 
   &-label {
     cursor: pointer;
-    @include flexbox();
-    @include align-items(center);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
   }
 
   &-icon {
     padding-top: 0.125rem;
     padding-right: 0.5rem;
-    
+
     &__down {
-      @include rotate(90);
-      @include transition(all, 0.15s, ease);
+      @include mixins.rotate(90);
+      @include mixins.transition(all, 0.15s, ease);
     }
 
     &__right {
-      @include rotate(0);
-      @include transition(all, 0.15s, ease);
+      @include mixins.rotate(0);
+      @include mixins.transition(all, 0.15s, ease);
     }
   }
 }

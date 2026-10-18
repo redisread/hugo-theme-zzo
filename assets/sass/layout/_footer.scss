@@ -1,10 +1,15 @@
+@use "../abstracts/flexbox";
+@use "../abstracts/functions";
+@use "../abstracts/mixins";
+@use "../themes/theme";
+
 .footer {
   padding: 0 0.5rem;
   position: relative;
 
-  @include themify($themes) {
-    color: themed('footer-color');
-    background-color: themed('footer-background-color');
+  @include mixins.themify(theme.$themes) {
+    color: mixins.themed('footer-color');
+    background-color: mixins.themed('footer-background-color');
   }
 
   &__social {
@@ -12,15 +17,15 @@
     position: -webkit-sticky;
     position: sticky;
     bottom: 70px;
-    
-    @include flexbox();
-    @include justify-content(center);
+
+    @include flexbox.flexbox();
+    @include flexbox.justify-content(center);
   }
 
   &__poweredby {
-    @include flexbox();
-    @include align-items(center);
-    @include flex-direction(column);
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.flex-direction(column);
     padding: 0.5rem 0;
 
     p {
@@ -30,11 +35,11 @@
 
   &__copyright {
     &--img {
-      margin-bottom: 0.25rem; 
-      
-      @include flexbox();
-      @include align-items(center);
-      @include justify-content(center);
+      margin-bottom: 0.25rem;
+
+      @include flexbox.flexbox();
+      @include flexbox.align-items(center);
+      @include flexbox.justify-content(center);
     }
   }
 
@@ -51,15 +56,15 @@
     height: 40px;
     border-radius: 0.25rem;
 
-    @include flexbox();
-    @include align-items(center);
-    @include justify-content(center);    
-    @include themify($themes) {
-      color: themed('gtt-color');
-      background-color: themed('gtt-background-color');
-      @include on-event {
-        color: themed('gtt-hover-color');
-        background-color: themed('gtt-hover-background-color');
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.justify-content(center);
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('gtt-color');
+      background-color: mixins.themed('gtt-background-color');
+      @include mixins.on-event {
+        color: mixins.themed('gtt-hover-color');
+        background-color: mixins.themed('gtt-hover-background-color');
       }
     }
 
@@ -70,13 +75,13 @@
       border: none;
       width: 100%;
       height: 100%;
-      
-      @include themify($themes) {
-        color: themed('gtt-color');
-        background-color: themed('gtt-background-color');
-        @include on-event {
-          color: themed('gtt-hover-color');
-          background-color: themed('gtt-hover-background-color');
+
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('gtt-color');
+        background-color: mixins.themed('gtt-background-color');
+        @include mixins.on-event {
+          color: mixins.themed('gtt-hover-color');
+          background-color: mixins.themed('gtt-hover-background-color');
         }
       }
     }
@@ -87,7 +92,7 @@
       left: 0;
       display: none;
       height: auto;
-      z-index: z("dropdown");      
+      z-index: functions.z("dropdown");
       border-top-left-radius: 0.15rem;
       border-top-right-radius: 0.15rem;
 
@@ -95,15 +100,15 @@
         font-size: 0.9rem;
       }
 
-      @include box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
-      @include themify($themes) {
-        border-bottom: 4px solid themed("dropdown-border-top-color");
-        background-color: themed("dropdown-content-background-color");
+      @include mixins.box-shadow(0, 1px, 3px, 0, rgba(0, 0, 0, 0.4));
+      @include mixins.themify(theme.$themes) {
+        border-bottom: 4px solid mixins.themed("dropdown-border-top-color");
+        background-color: mixins.themed("dropdown-content-background-color");
       }
 
       .is-active {
-        @include themify($themes) {
-          background-color: themed("dropdown-item-active-background-color");
+        @include mixins.themify(theme.$themes) {
+          background-color: mixins.themed("dropdown-item-active-background-color");
         }
       }
     }
@@ -117,12 +122,12 @@
       display: block;
       font-size: 1rem;
 
-      @include truncate(150px);
-      @include themify($themes) {
-        color: themed("dropdown-item-color");
-        @include on-event {
-          color: themed("dropdown-item-hover-color");
-          background-color: themed("dropdown-item-hover-background-color");
+      @include mixins.truncate(150px);
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed("dropdown-item-color");
+        @include mixins.on-event {
+          color: mixins.themed("dropdown-item-hover-color");
+          background-color: mixins.themed("dropdown-item-hover-background-color");
           text-decoration: none;
 
           &:first-child {
@@ -134,10 +139,10 @@
     }
   }
 
-  .select-theme {    
-    &__label {      
+  .select-theme {
+    &__label {
       color: inherit;
-      text-transform: capitalize;            
+      text-transform: capitalize;
     }
 
     &__item {
@@ -155,14 +160,14 @@
   .social {
     margin: 0.25rem;
     a {
-      @include themify($themes) {        
+      @include mixins.themify(theme.$themes) {
         text-decoration: none;
-        color: themed('social-icon-color');
+        color: mixins.themed('social-icon-color');
         &:hover {
-          color: themed('social-icon-hover-color');
+          color: mixins.themed('social-icon-hover-color');
           transition: color 0.2s ease;
-        }        
-      }   
+        }
+      }
     }
   }
 
@@ -171,8 +176,8 @@
   }
 
   hr {
-    @include themify($themes) {
-      border-top: 1px solid themed('hr-color') !important;
+    @include mixins.themify(theme.$themes) {
+      border-top: 1px solid mixins.themed('hr-color') !important;
     }
   }
 }

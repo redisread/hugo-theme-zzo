@@ -1,28 +1,15 @@
-$grid_max_width: 960;
-
-@if global-variable-exists(viewport_size) {
-    @if $viewport_size == widest {
-        $grid_max_width: 1600;
-    } @else if $viewport_size == wider {
-        $grid_max_width: 1440;
-    } @else if $viewport_size == wide {
-        $grid_max_width: 1280;
-    } @else if $viewport_size == narrow {
-        $grid_max_width: 800;
-    } @else {
-        $grid_max_width: 960;
-    }
-}
-
-$grid_max: $grid_max_width + $grid_max_unit;
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../layout/grid";
+@use "../themes/theme";
 
 .wrapper {
   margin: 0 auto;
   position: relative;
 
-  @include justify-content(center);
-  @include themify($themes) {
-      background-color: themed('body-background-color');
+  @include flexbox.justify-content(center);
+  @include mixins.themify(theme.$themes) {
+      background-color: mixins.themed('body-background-color');
   }
   @media only screen and (max-width: 769px) {
       grid-template-columns: 1fr;
@@ -32,13 +19,13 @@ $grid_max: $grid_max_width + $grid_max_unit;
         display: none;
       }
   }
-  
+
   &__left {
     position: fixed;
     top: 0;
     left: -0.5rem;
     height: 100vh;
-    width: calc((100vw - #{$grid_max}) / 2);
+    width: calc((100vw - #{grid.$grid_max}) / 2);
 
     &[data-pad="false"] {
       left: 0;
@@ -50,7 +37,7 @@ $grid_max: $grid_max_width + $grid_max_unit;
     top: 0;
     right: -0.5rem;
     height: 100vh;
-    width: calc((100vw - #{$grid_max}) / 2);
+    width: calc((100vw - #{grid.$grid_max}) / 2);
 
     &[data-pad="false"] {
       right: 0;

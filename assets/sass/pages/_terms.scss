@@ -1,20 +1,26 @@
+@use "sass:color";
+@use "../abstracts/flexbox";
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .terms {
-  @include flexbox();
-  @include align-items(center);
-  @include flex-direction(column);
+  @include flexbox.flexbox();
+  @include flexbox.align-items(center);
+  @include flexbox.flex-direction(column);
   width: 100%;
-  
+
   &__title {
     margin: 2rem 0;
-    font-family: $title-font;
-    
-    @include themify($themes) {
-      color: themed('terms-title-color');
-      text-shadow: 1.2px 1.2px 0 themed('terms-title-color'),
-        2.4px 2.4px 0 lighten(themed('terms-title-shadow-color'), 4%),
-        3.6px 3.6px 0 lighten(themed('terms-title-shadow-color'), 8%),
-        4.8px 4.8px 0 lighten(themed('terms-title-shadow-color'), 12%);
-    }    
+    font-family: settings.$title-font;
+
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('terms-title-color');
+      text-shadow: 1.2px 1.2px 0 mixins.themed('terms-title-color'),
+        2.4px 2.4px 0 color.adjust(mixins.themed('terms-title-shadow-color'), $lightness: 4%),
+        3.6px 3.6px 0 color.adjust(mixins.themed('terms-title-shadow-color'), $lightness: 8%),
+        4.8px 4.8px 0 color.adjust(mixins.themed('terms-title-shadow-color'), $lightness: 12%);
+    }
   }
 
   &__content {
@@ -24,10 +30,10 @@
   &__list {
     width: 50%;
 
-    @include flexbox();
-    @include align-items(center);
-    @include flex-wrap(wrap);
-    
+    @include flexbox.flexbox();
+    @include flexbox.align-items(center);
+    @include flexbox.flex-wrap(wrap);
+
     @media only screen and (max-width: 769px) {
       width: 100%;
       padding: 2rem 1rem;
@@ -36,14 +42,14 @@
 
   &__item {
     display: inline-block;
-    margin-right: 1rem;  
+    margin-right: 1rem;
     text-decoration: none !important;
     border-radius: 0.25rem;
     padding: 0.25rem;
 
-    @include transition(all, 0.2s, ease);
-    @include on-event {
-      @include translateY(-0.25rem);
+    @include mixins.transition(all, 0.2s, ease);
+    @include mixins.on-event {
+      @include mixins.translateY(-0.25rem);
     }
   }
 
@@ -54,26 +60,26 @@
   }
 
   &__tags {
-    @include themify($themes) {
-      color: themed('terms-tags-color');
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('terms-tags-color');
     }
   }
 
   &__categories {
-    @include themify($themes) {
-      color: themed('terms-categories-color');
-    }    
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('terms-categories-color');
+    }
   }
 
   &__series {
-    @include themify($themes) {
-      color: themed('terms-series-color');
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('terms-series-color');
     }
   }
 
   &__len {
-    @include themify($themes) {
-      color: themed('terms-len-color');
+    @include mixins.themify(theme.$themes) {
+      color: mixins.themed('terms-len-color');
     }
   }
 

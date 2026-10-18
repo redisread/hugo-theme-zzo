@@ -1,9 +1,13 @@
+@use "../abstracts/mixins";
+@use "../abstracts/settings";
+@use "../themes/theme";
+
 .list {
   &__main {
     position: relative;
-  
+
     &[data-display="block"] {
-      display: block; 
+      display: block;
     }
 
     &[data-display="none"] {
@@ -42,11 +46,11 @@
     align-items: center;
     justify-content: center;
     margin: 1.25rem 0;
-    font-family: $title-font;
+    font-family: settings.$title-font;
 
     &--title {
-      @include themify($themes) {
-        color: themed('list-header-title-color');
+      @include mixins.themify(theme.$themes) {
+        color: mixins.themed('list-header-title-color');
       }
     }
 

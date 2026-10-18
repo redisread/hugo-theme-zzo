@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "../abstracts/settings";
+
 $kimbie: (
   footer-background-color: #423523,
   footer-color: #d3af86,
@@ -14,7 +17,7 @@ $kimbie: (
   dropdown-content-background-color: #6e583b,
   dropdown-item-hover-background-color: #5e452b,
   dropdown-item-hover-color: #f06431,
-  dropdown-item-color: lighten(#d3af86, 20%),
+  dropdown-item-color: color.adjust(#d3af86, $lightness: 20%),
   navbar-border-bottom-color: #6e583b,
   navbar-background-color: #51412c,
   navbar-mobile-background-color: #423523,
@@ -66,8 +69,8 @@ $kimbie: (
   toc-vertical-line: #a57a4c,
   toc-vertical-line-active: #889b4a,
   toc-header-background-color: #362712,
-  toc-header-background-color-hover: lighten(#362712, 3%),
-  toc-body-background-color: lighten(#221a0f, 1.5%),
+  toc-header-background-color-hover: color.adjust(#362712, $lightness: 3%),
+  toc-body-background-color: color.adjust(#221a0f, $lightness: 1.5%),
   search-placeholder-color: #6e583b,
   search-color: #d3af86,
   search-icon-color: #6e583b,
@@ -105,5 +108,5 @@ $kimbie: (
   share-shadow-color: #828282,
   share-background-color: #403c38,
   donation-background-color: #52493c,
-  button-primary-color: $button_kimbie_primary_color,
+  button-primary-color: settings.$button_kimbie_primary_color,
 );

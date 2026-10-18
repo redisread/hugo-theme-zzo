@@ -1,4 +1,6 @@
-@include keyframes(slide-in-down) {
+@use "../abstracts/mixins";
+
+@include mixins.keyframes(slide-in-down) {
   0% {
     transform: translate(0,-12%);
     opacity: 0;
@@ -10,7 +12,7 @@
   }
 }
 
-@include keyframes(slide-in-left) {
+@include mixins.keyframes(slide-in-left) {
   0% {
     transform: translate(-12%,0);
     opacity: 0;
@@ -22,7 +24,7 @@
   }
 }
 
-@include keyframes(slide-in-left-little) {
+@include mixins.keyframes(slide-in-left-little) {
   0% {
     transform: translate(-1%,0);
     opacity: 0;
@@ -34,7 +36,7 @@
   }
 }
 
-@include keyframes(slide-in-down-little) {
+@include mixins.keyframes(slide-in-down-little) {
   0% {
     transform: translate(0,-3%);
     opacity: 0;
@@ -46,7 +48,7 @@
   }
 }
 
-@include keyframes(fade-in) {
+@include mixins.keyframes(fade-in) {
   0% {
     opacity: 0;
   }
