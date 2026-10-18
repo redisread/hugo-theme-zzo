@@ -65,7 +65,7 @@
 **Estimated scope:** Medium per batch; numbered migration batches are recorded below as executed.
 
 ### Checkpoint
-- [ ] Build/output checks pass before dependent phase.
+- [x] Build/output checks pass before dependent phase.
 
 ## 5. Sass settings and theme context
 
@@ -116,7 +116,7 @@
 **Estimated scope:** Medium per batch; numbered migration batches are recorded below as executed.
 
 ### Checkpoint
-- [ ] Build/output checks pass before dependent phase.
+- [x] Build/output checks pass before dependent phase.
 
 ## 8. Output regression harness
 
@@ -167,11 +167,11 @@
 **Estimated scope:** Medium per batch; numbered migration batches are recorded below as executed.
 
 ### Checkpoint
-- [ ] Build/output checks pass before dependent phase.
+- [x] Build/output checks pass before dependent phase.
 
 ## 11. Independent review and delivery
 
-- [ ] Complete
+- [x] Complete
 
 **Description:** Independent review and delivery.
 
@@ -192,7 +192,7 @@
 - Hugo 0.168.0 + Dart Sass 1.105.2: bilingual example and real blog build with `--panicOnWarning`.
 - Blog: 563 artifacts; all HTML/XML/JSON paths, search URLs/titles/nonempty tags and RSS item order match baseline.
 - Chromium: all five palettes at 390px and 1440px have identical computed layout/color/font properties with animations disabled.
-- Browser suite covers desktop/mobile article, five palettes, desktop/mobile search and optional page types. Example: 5 passing tests.
+- Browser suite covers desktop/mobile article, five palettes, desktop/mobile search and optional page types. Example: 5 passing tests; real blog: 5 passing tests.
 - Independent review: no blocking findings; auto-merge permitted after current GitHub CI is green.
 - Third-party tracking/comments/media blocked in browser regression; live service functionality is not claimed.
 
@@ -214,3 +214,10 @@ Each batch below contains at most five files. Acceptance: module/template depend
 - [x] Sass batch 12: `assets/sass/themes/_dark.scss`, `assets/sass/themes/_darkcode.scss`, `assets/sass/themes/_hacker.scss`, `assets/sass/themes/_hackercode.scss`, `assets/sass/themes/_kimbie.scss`.
 - [x] Sass batch 13: `assets/sass/themes/_kimbiecode.scss`, `assets/sass/themes/_light.scss`, `assets/sass/themes/_lightcode.scss`, `assets/sass/themes/_solarized.scss`, `assets/sass/themes/_solarizedcode.scss`.
 - [x] Sass batch 14: `assets/sass/themes/_theme.scss`.
+
+## Release evidence
+
+- Theme [PR #3](https://github.com/redisread/hugo-theme-zzo/pull/3): reviewed, CI passed, merged as `db9d91c`.
+- Blog [PR #53](https://github.com/redisread/HUGO_blog/pull/53): CI passed, merged as `b2a9ff4`; pins theme source `df32638`.
+- Production [build/deploy](https://github.com/redisread/HUGO_blog/actions/runs/39121715956) and [Pages publish](https://github.com/redisread/redisread.github.io/actions/runs/39121786279) succeeded. Published commit: `0ffd810801264a8be61cdbddd06335a9eda08ba8`.
+- Public HTTP smoke at https://hugo.jiahongw.com/: homepage, article `/20200304/scrapy-exercise/`, and `/tags/scrapy/` return 200 and identify Hugo 0.168.0. Main CSS bytes exactly match validated local production output. Search index has 54 records; root and Scrapy tag RSS parse successfully.
