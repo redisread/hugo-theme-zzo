@@ -1,0 +1,33 @@
+name: Theme validation
+on:
+  pull_request:
+  push:
+    branches: [master]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Install pinned Hugo and Dart Sass
+        run: |
+          scripts/install-tools.sh "$RUNNER_TEMP/zzo-toolchain"
+          echo "$RUNNER_TEMP/zzo-toolchain" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/zzo-toolchain/dart-sass" >> "$GITHUB_PATH"
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: scripts/build-example.sh
+      - run: npm test
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-evidence
+          path: |
+            test-results/
+            .build/*.png
