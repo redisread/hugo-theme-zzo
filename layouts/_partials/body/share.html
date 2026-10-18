@@ -12,7 +12,7 @@
           {{ partial "svgs/share/facebook.svg" (dict "width" 35 "height" 35) }}
         </a>
       {{ else if eq (lower .name) "twitter" }}
-        <a href="https://twitter.com/intent/tweet?text={{ $ctx.Title }}&url={{ $ctx.Permalink | absLangURL }}{{ with $ctx.Params.tags }}&hashtags={{ delimit . "," }}{{ end }}&via={{ .username | default $ctx.Params.author }}" title="{{ i18n "twitter" | default "Twitter" }}" aria-label="Twitter Share Button" class="donation__item" target="_blank" rel="noreferrer" data-type="share">
+        <a href="https://twitter.com/intent/tweet?text={{ $ctx.Title }}&url={{ $ctx.Permalink | absLangURL }}{{ with $ctx.Params.tags }}&hashtags={{ delimit . "," }}{{ end }}&via={{ .username | default $ctx.Params.author }}" title="X" aria-label="Share on X" class="donation__item" target="_blank" rel="noreferrer" data-type="share">
           {{ partial "svgs/share/twitter.svg" (dict "width" 35 "height" 35) }}
         </a>
       {{ else if eq (lower .name) "reddit" }}
